@@ -11,18 +11,40 @@ class WordSearch:
         words (list): A list of words to be placed in the grid.
     """
     
-    def __init__(self, grid_size=15):
+    def __init__(self):
         """
         Initializes the WordSearch object with a specified grid size.
 
         Args:
-            grid_size (int): The size of the grid. Default is 15.
+            grid_size (int): The size of the grid. Defaults to None.
         """
-        self.grid_size = grid_size 
-        self.grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)] #will replace underscores with letters later
+        self.grid_size = None
+        self.grid = None
         self.words = []  #To store the list of words
         self.word_positions = {} #This is for our hint and solver logic
-
+    
+    def set_difficulty(self):
+        """
+        Asks the user what difficulty level they want and sets the grid size accordingly.
+        """
+        while True:
+            difficulty = input("What Difficulty would you like(Easy, Medium, Hard, Impossible): ").lower() #.lower() to avoid case errors
+            if difficulty == "easy":
+                self.grid_size = 10
+                break
+            elif difficulty == "medium":
+                self.grid_size = 15
+                break
+            elif difficulty == "hard":
+                self.grid_size = 20
+                break
+            elif difficulty == "impossible":
+                self.grid_size = 50
+                break
+            else:
+                print("Invalid Difficulty Level Try Again:")
+        self.grid = [['_' for _ in range(self.grid_size)] for _ in range(self.grid_size)] #Will replace underscores with letters later
+        
     def generate_word_search(self):
         """
         Generates a list of random words from a predefined list and stores them
@@ -137,9 +159,10 @@ class WordSearch:
                     self.grid[row][col] = random.choice(string.ascii_uppercase)#getting random letters
 
 #Testing for the output
-"""                             
+"""                         
 if __name__ == "__main__":
     ws = WordSearch()
+    ws.set_difficulty()
     ws.generate_word_search()
     ws.place_words()
     ws.fill_empty_spaces()
