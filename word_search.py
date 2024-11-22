@@ -18,8 +18,8 @@ class WordSearch:
         Args:
             grid_size (int): The size of the grid. Default is 15.
         """
-        self.grid_size = grid_size
-        self.grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)]
+        self.grid_size = grid_size 
+        self.grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)] #will replace underscores with letters later
         self.words = []  #To store the list of words
 
     def generate_word_search(self):
@@ -36,7 +36,7 @@ class WordSearch:
             "LOOP", "CONDITION", "VARIABLE", "CLASS", "METHOD", "OBJECT"
         ]
         self.words = random.sample(word_list, 5)  #Ensure unique words
-        print("Random Words:", self.words)
+        print("Find These Words:", self.words) #this is to check what words were given
 
     def create_grid(self):
         """
@@ -66,7 +66,7 @@ class WordSearch:
         for word in self.words:
             word_length = len(word)  #Check the length of the word so it doesn't go off the grid
             placed = False
-            attempts = 0  #Add a counter for attempts
+            attempts = 0  #Add a counter for attempts so no infinite loops
 
             while not placed and attempts < 100:  #Limit to 100 attempts
                 direction = random.choice(directions)
@@ -100,26 +100,26 @@ class WordSearch:
                     new_y = y_pos + i * dy
 
                     new_position = self.grid[new_x][new_y]
-                    if new_position != '_':
+                    if new_position != '_': #if the grid cell is empty the word can be placed
                         if new_position == word[i]:
                             continue
                         else:
-                            not_placed = True
+                            not_placed = True #if it cant be placed go to the next segment
                             break
 
-                if not_placed:
-                    attempts += 1
+                if not_placed: 
+                    attempts += 1 #Keep trying you have 100 attempts
                     continue
                 else:
-                    # Place the word
-                    for i in range(word_length):
-                        new_x = x_pos + i * dx
+                    #Past this point the word can be placed!
+                    for i in range(word_length): #Place the word based on its direction
+                        new_x = x_pos + i * dx #placing each character one by one
                         new_y = y_pos + i * dy
-                        self.grid[new_x][new_y] = word[i]
-                    placed = True
+                        self.grid[new_x][new_y] = word[i] 
+                    placed = True #Marks the word as placed
 
             if not placed:
-                print(f"Failed to place the word: {word}")
+                print(f"Failed to place the word: {word}") #test case for any random errors in placing words
                 
     def fill_empty_spaces(self):
         """
@@ -130,9 +130,11 @@ class WordSearch:
         """
         for row in range(self.grid_size):
             for col in range(self.grid_size):
-                if self.grid[row][col] == '_':
-                    self.grid[row][col] = random.choice(string.ascii_uppercase)
-                                    
+                if self.grid[row][col] == '_': #replacing all underscores 
+                    self.grid[row][col] = random.choice(string.ascii_uppercase)#getting random letters
+
+#Testing for the output
+                             
 if __name__ == "__main__":
     ws = WordSearch()
     ws.generate_word_search()
