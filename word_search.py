@@ -21,6 +21,7 @@ class WordSearch:
         self.grid_size = grid_size 
         self.grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)] #will replace underscores with letters later
         self.words = []  #To store the list of words
+        self.word_positions = {} #This is for our hint and solver logic
 
     def generate_word_search(self):
         """
@@ -115,7 +116,9 @@ class WordSearch:
                     for i in range(word_length): #Place the word based on its direction
                         new_x = x_pos + i * dx #placing each character one by one
                         new_y = y_pos + i * dy
-                        self.grid[new_x][new_y] = word[i] 
+                        self.grid[new_x][new_y] = word[i]
+                        
+                    self.word_positions[word] = (x_pos, y_pos, dx, dy) #Saves the words position in the grid
                     placed = True #Marks the word as placed
 
             if not placed:
@@ -134,10 +137,11 @@ class WordSearch:
                     self.grid[row][col] = random.choice(string.ascii_uppercase)#getting random letters
 
 #Testing for the output
-                             
+"""                             
 if __name__ == "__main__":
     ws = WordSearch()
     ws.generate_word_search()
     ws.place_words()
     ws.fill_empty_spaces()
     ws.create_grid()
+"""
