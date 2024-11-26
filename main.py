@@ -1,5 +1,6 @@
 import argparse
 from word_search import WordSearch
+from puzzle_solver import PuzzleSolver
 #from maze_builder import Maze
 from hint_provider import HintProvider
 
@@ -38,8 +39,8 @@ def run_puzzle_game():
             hint_provider = HintProvider(ws.words, ws.grid, ws.word_positions)
             hint_provider.ask_for_hint()
             
-            #Word Search Solver goes here
-            #word_finder = solve_maze()
+            #puzzle_solver = PuzzleSolver()
+            #puzzle_solver.ask_for_solve()
             break
         
         elif puzzle_type == "maze":
