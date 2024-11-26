@@ -41,6 +41,8 @@ def run_puzzle_game():
             
             #puzzle_solver = PuzzleSolver()
             #puzzle_solver.ask_for_solve()
+            puzzle_solver = PuzzleSolver(ws.grid, ws.words, ws.word_positions)
+            puzzle_solver.ask_for_solve()
             break
         
         elif puzzle_type == "maze":
