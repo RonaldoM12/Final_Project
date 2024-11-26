@@ -63,3 +63,28 @@ class PuzzleSolver:
                         return(row, col)
         # Search for the word in the grid and return its starting position if found
         return(-1,-1)
+    
+    def ask_for_solve(self, word_search_data, words):
+        """
+        Asks the user if they want the word search puzzle solved.
+
+        Args:
+            word_search_data (list): The word search grid.
+            words (list): List of words to be solved.
+        """
+        while True:
+            user_input = input("\nWould you like the word search to be solved? (Y/N): ").strip().upper()
+            if user_input == "Y":
+                print("Solving the puzzle...")
+                for word in words:
+                    result = self.solve_word_search(word_search_data, word)
+                    if result != (-1, -1):
+                        print(f"Word '{word}' found starting at position {result}.")
+                    else:
+                        print(f"Word '{word}' not found in the grid.")
+                break
+            elif user_input == "N":
+                print("Alright, good luck solving it!")
+                break
+            else:
+                print("Invalid input. Please enter 'Y' for yes or 'N' for no.")
