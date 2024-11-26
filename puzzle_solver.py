@@ -31,5 +31,35 @@ class PuzzleSolver:
         Returns:
             tuple: The starting coordinates of the word in the grid.
         """
+
+        rows = len(word_search_data)
+        cols = len(word_search_data[0]) if rows > 0 else 0
+        word_length = len(word)
+
+        directions = [ (0, 1) #right
+                      , (1, 0) #down 
+                      , (0, -1) #left 
+                      , (-1, 0) #up
+                      , (1, 1) #Diagonal down right
+                      , (1, -1) #Diagonal down left
+                      , (-1, -1) #Diagonal up - left
+                      , (-1, 1) #diagonal up - right
+                      ]
+        def is_valid_position(row, col):
+            return 0 <= row < rows and 0 <= col < cols
+
+        def search_from_position(row, col, direction):
+            for i in range(word_length):
+                new_row = row + i * direction[0]
+                new_col = col + i * direction[i]
+                if not is_valid_position(new_row, new_col) or word_search_data[new_row][new_col] != word[i]:
+                    return False
+                return True
+            
+        for row in range(rows):
+            for col in range(cols):
+                if word_search_data[row][col] == word[0]:
+                    for direction in directions:
+                        return(row, col)
         # Search for the word in the grid and return its starting position if found
-        pass
+        return(-1,-1)
