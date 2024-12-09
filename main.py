@@ -1,7 +1,6 @@
 import argparse
 from word_search import WordSearch
 from puzzle_solver import PuzzleSolver
-#from maze_builder import Maze
 from hint_provider import HintProvider
 
 def parse_args() -> dict:
