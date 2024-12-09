@@ -23,33 +23,21 @@ def run_puzzle_game():
     Note:
         This function involves user input/output and requires a human testing procedure.
     """
-    while True:
-        puzzle_type = input("What type of puzzle would you like? (Word Search/Maze): ").lower()
-        if puzzle_type == "word search":
-            # Word Search Puzzle goes here
-            ws = WordSearch()
-            ws.set_difficulty()
-            ws.generate_word_search()
-            ws.place_words()
-            ws.fill_empty_spaces()
-            ws.create_grid()
-            
-            #Hint Provider for Word Search goes here
-            hint_provider = HintProvider(ws.words, ws.grid, ws.word_positions)
-            hint_provider.ask_for_hint()
-            
-            #puzzle_solver = PuzzleSolver()
-            #puzzle_solver.ask_for_solve()
-            puzzle_solver = PuzzleSolver(ws.grid, ws.words, ws.word_positions)
-            puzzle_solver.ask_for_solve()
-            break
-        
-        elif puzzle_type == "maze":
-            #Maze Puzzle code goes here 
-            pass
-            
-        else:
-            print("Invalid input. Please enter 'Word Search' or 'Maze'.")            
+    # Word Search Puzzle goes here
+    ws = WordSearch()
+    ws.set_difficulty()
+    ws.generate_word_search()
+    ws.place_words()
+    ws.fill_empty_spaces()
+    ws.create_grid()
+    
+    #Hint Provider and Solver for Word Search goes here
+    hint_provider = HintProvider(ws.words, ws.grid, ws.word_positions)
+    puzzle_solver = PuzzleSolver(ws.words, ws.grid, ws.word_positions)
+    
+    hint_provider.ask_for_hint()
+    puzzle_solver.ask_for_solve()       
+           
             
 if __name__ == "__main__":
     run_puzzle_game()
