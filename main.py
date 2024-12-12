@@ -3,18 +3,6 @@ from word_search import WordSearch
 from puzzle_solver import PuzzleSolver
 from hint_provider import HintProvider
 
-def parse_args() -> dict:
-    """
-    Parses command-line arguments for configuring the puzzle type, difficulty, and hints.
-
-    Returns:
-        dict: Dictionary containing parsed arguments (puzzle type, difficulty level, etc.).
-    """
-    #Parse arguments for type of puzzle, difficulty, and hint requests
-    parser = argparse.ArgumentParser(description="Puzzle Generator")
-    #Define arguments here
-    return vars(parser.parse_args())
-
 def run_puzzle_game():
     """
     Runs the puzzle game based on command-line inputs. Integrates with other modules to generate
