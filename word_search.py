@@ -16,10 +16,12 @@ class WordSearch:
         Initializes the WordSearch object with a specified grid size.
 
         Args:
-            grid_size (int): The size of the grid. Defaults to None.
+            grid_size (int): The size of the grid.
         """
         self.grid_size = None
         self.grid = None
+        #self.grid_size = grid_size 
+        #self.grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)] #will replace underscores with letters later
         self.words = []  #To store the list of words
         self.word_positions = {} #This is for our hint and solver logic
     
