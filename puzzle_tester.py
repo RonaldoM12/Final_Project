@@ -23,9 +23,9 @@ class TestWordSearch(unittest.TestCase):
         for word in self.word_search.words:
             self.assertIn(word, [
                 "APPLE", "BANANA", "ORANGE", "PYTHON", "PUZZLE", "SEARCH", "COMPUTER",
-                "SCIENCE", "PROGRAM", "CODING", "LOGIC", "FUN", "GAMING", "HELLO", "WORLD",
-                "ALGORITHM", "DATA", "DEBUG", "STRING", "NUMBER", "MATRIX", "ARRAY",
-                "LOOP", "CONDITION", "VARIABLE", "CLASS", "METHOD", "OBJECT"
+            "SCIENCE", "PROGRAM", "CODING", "LOGIC", "FUN", "GAMING", "HELLO", "WORLD",
+            "ALGORITHM", "DATA", "DEBUG", "STRING", "NUMBER", "MATRIX", "ARRAY",
+            "LOOP", "CONDITION", "VARIABLE", "CLASS", "METHOD", "OBJECT"
             ], f"Word '{word}' not in predefined word list.")
 
     def test_grid_creation(self):
